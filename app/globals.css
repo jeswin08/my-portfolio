@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  /* ---- Core palette ---- */
+  --ink: #0a0c10;          /* base background — deep ink, not pure black */
+  --ink-raised: #101318;   /* slightly raised panels */
+  --paper: #ece8df;        /* primary text — warm off-white */
+  --muted: #8b8f98;        /* secondary text */
+  --line: #22252c;         /* hairline dividers */
+
+  /* ---- Signal accents (grounded in FinSentinel's risk-scoring concept) ---- */
+  --signal-amber: #e2963c; /* risk / detection */
+  --signal-teal: #52d1c4;  /* verified / trust */
+
+  --background: var(--ink);
+  --foreground: var(--paper);
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-amber: var(--signal-amber);
+  --color-teal: var(--signal-teal);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--signal-amber);
+  color: var(--ink);
+}
+
+/* Custom scrollbar — thin, quiet */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--signal-teal);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
