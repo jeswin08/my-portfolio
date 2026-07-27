@@ -20,7 +20,6 @@ export default function VoiceWave() {
       </defs>
       <rect x="0" y="0" width="400" height="300" fill="url(#voiceGlow)" />
 
-      {/* transcription lines */}
       {[0, 1, 2].map((i) => (
         <motion.line
           key={i}
@@ -31,13 +30,11 @@ export default function VoiceWave() {
           stroke="var(--color-line)"
           strokeWidth="1.5"
           initial={{ pathLength: 0, opacity: 0 }}
-          whileInView={{ pathLength: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 1.2 + i * 0.15 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 + i * 0.15 }}
         />
       ))}
 
-      {/* waveform bars */}
       {bars.map((h, i) => (
         <motion.rect
           key={i}

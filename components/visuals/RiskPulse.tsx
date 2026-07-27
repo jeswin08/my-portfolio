@@ -18,7 +18,6 @@ export default function RiskPulse() {
       </defs>
       <rect x="0" y="0" width="400" height="300" fill="url(#riskGlow)" />
 
-      {/* concentric radar rings */}
       {[40, 80, 120].map((r, i) => (
         <motion.circle
           key={r}
@@ -40,7 +39,6 @@ export default function RiskPulse() {
         />
       ))}
 
-      {/* waveform / transaction trace */}
       <motion.path
         d="M 20 150 L 90 150 L 110 100 L 140 200 L 165 60 L 190 220 L 215 150 L 260 150 L 280 130 L 310 170 L 340 150 L 380 150"
         fill="none"
@@ -49,21 +47,18 @@ export default function RiskPulse() {
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 2, ease: [0.19, 1, 0.22, 1] }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 2, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
       />
 
-      {/* flagged anomaly point */}
       <motion.circle
         cx="165"
         cy="60"
         r="4"
         fill="var(--signal-amber)"
         initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.4, duration: 0.4 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1.6, duration: 0.4 }}
       />
       <motion.circle
         cx="165"
